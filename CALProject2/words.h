@@ -25,7 +25,7 @@ public:
 	void operator=(word W)
 	{
 		this->Word = W.getWord();
-		//this->visited = w.isVisited();
+		//this->visited = w.isVisited();    
 	}
 	bool operator==(word w)
 	{

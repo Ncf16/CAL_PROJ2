@@ -14,6 +14,7 @@
 #include <algorithm>
 #include "parsing.h"
 #include <time.h>
+#include "file.h"
 using namespace std;
 
 /**< Macros de cores para usar no menu */
@@ -32,7 +33,7 @@ using namespace std;
 /** Maximo de items a mostar no ecra, quando se usa o scroll */
 const unsigned int MAX_PER_SCREEN = 6;
 
-void menu(dictionary d);
+void menu(File d);
 
 /**
  * Mete o cursor numa posicao do ecra, para se poder escrever nesse local diretamente

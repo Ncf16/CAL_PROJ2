@@ -17,7 +17,7 @@ using namespace std;
 
 //algoritmo de exact matching, vale a pena por 1 char?
 
-void loadParse(string diciName, dictionary &d) {
+void loadParse(string diciName, File &d) {
 	ifstream dic;
 	 
 	cout << diciName << endl;

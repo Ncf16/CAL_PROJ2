@@ -8,7 +8,7 @@
 
 namespace CALProject2 {
 
-	dictionary d;
+	File d;
 	string file;
 	string toString(System::String^ str) {
 		string tmp;

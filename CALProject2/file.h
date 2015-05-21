@@ -10,20 +10,15 @@
 #include "words.h"
 #include <set>
 
-//typedef struct {
-//	bool operator()(word * W, word* W1) {
-//		return W->wSize() > W1->wSize();
-//	}
-//
-//} comparteToSize;
-class file {
+
+class File {
 
 private:
 	set<word*> words;
 public:
-	file() {
+	File() {
 	}
-	file(set<word*> w) {
+	File(set<word*> w) {
 		words = w;
 
 	}

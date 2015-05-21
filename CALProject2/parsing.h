@@ -18,6 +18,6 @@
 #include "menu.h"
  
  
-void loadParse(std::string file,dictionary &d);
+void loadParse(std::string file, File &d);
 
 #endif /* SRC_PARSING_H_ */

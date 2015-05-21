@@ -45,7 +45,7 @@ int main(array<System::String ^> ^args) {
 
 
 		
-		dictionary d;
+		File d;
 	//	menu(d);
 	//initi();
 	return 0;
