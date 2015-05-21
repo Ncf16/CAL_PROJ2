@@ -16,14 +16,14 @@
 //	}
 //
 //} comparteToSize;
-class dictionary {
+class file {
 
 private:
 	set<word*> words;
 public:
-	dictionary() {
+	file() {
 	}
-	dictionary(set<word*> w) {
+	file(set<word*> w) {
 		words = w;
 
 	}
