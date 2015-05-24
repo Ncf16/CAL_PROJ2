@@ -4,7 +4,7 @@
 #include <string>
 #include<fstream>
 using namespace CALProject2;
-void replaceWord(string word, string wordToBeChanged, ofstream file, string fileName)
+/*void replaceWord(string word, string wordToBeChanged, ofstream file, string fileName)
 {
 
 	//go back till the word
@@ -22,7 +22,7 @@ void initi()
 	std::ofstream  off;
 //	off.open(("teste.txt").c_str());
 	//replaceWord("ola", "asdasdasdasdasdasdasdas", off, "teste.txt");
-}
+}*/
 
 [STAThreadAttribute]
 int main(array<System::String ^> ^args) {

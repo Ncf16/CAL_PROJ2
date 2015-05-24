@@ -77,10 +77,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="autocorrect.cpp" />
-    <ClCompile Include="frmMain.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="parsing.cpp" />
-    <ClCompile Include="wordForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="autocorrect.h" />
@@ -103,9 +102,6 @@
     <EmbeddedResource Include="wordForm.resx">
       <DependentUpon>wordForm.h</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="..\..\..\..\..\Desktop\golfMac.png" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="teste.txt" />
