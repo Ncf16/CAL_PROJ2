@@ -1,16 +1,22 @@
+#ifndef SRC_VECTORWORDS_H_
+#define SRC_VECTORWORDS_H_
+
 #include <vector>
 #include <string>
 
-
+//a usar no wordForm 
 class VectorWords
 {
-public:
+private:
 	std::vector<std::string> words;
 	std::string wordToBeChanged;
+public:
+
 
 	void setWordToBeChanged(std::string w)
 	{
-		wordToBeChanged = w;
+		if (w != "")
+			wordToBeChanged = w;
 	}
 	void changeWords(std::vector<std::string> w)
 	{
@@ -29,3 +35,5 @@ public:
 		return wordToBeChanged;
 	}
 };
+
+#endif

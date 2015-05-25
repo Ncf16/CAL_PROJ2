@@ -27,15 +27,15 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="trie.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frmMain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="parsing.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="words.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="menu.h">
@@ -47,10 +47,16 @@
     <ClInclude Include="vectorWords.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="file.h">
+    <ClInclude Include="autocorrect.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="autocorrect.h">
+    <ClInclude Include="textBoxPopUp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dictionary.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="trie.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -59,6 +65,9 @@
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="wordForm.resx">
+      <Filter>Resource Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="textBoxPopUp.resx">
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
   </ItemGroup>

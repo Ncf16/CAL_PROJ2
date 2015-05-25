@@ -14,10 +14,11 @@
 #include <fstream>
 #include <stdlib.h>
 #include <stdio.h>
-#include "file.h"
+#include "dictionary.h"
 #include "menu.h"
- 
- 
-void loadParse(std::string file, File &d);
 
+
+int loadParse(std::string file, dictionary &d);
+std::string toString(System::String^ str);
+System::String^ toString(std::string str);
 #endif /* SRC_PARSING_H_ */

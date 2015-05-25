@@ -1,40 +1,38 @@
 #ifndef SRC_AUTOCORRECT_H_
 #define SRC_AUTOCORRECT_H_
-#include "file.h"
+#include "dictionary.h"
 #include <algorithm>
-#include<list>
+
+#include "vectorWords.h"
 class autoCorrect{
 private:
-	list<File> dic;
-	File text;
-	list<File>::iterator currDicPos;
-	set<word*>::iterator currFilePos;
+	dictionary dic;
+	vector<string> file;
+	VectorWords text;
+	vector<string>::iterator currFilePos;
 public:
 	autoCorrect(){
 	}
-	autoCorrect(list<File> dic, File text){
+	autoCorrect(dictionary dic, VectorWords text){
 		this->dic = dic;
 		this->text = text;
-		currDicPos = this->dic.begin();
 		currFilePos = this->text.getWords().begin();
 	}
-	void addDic(File dic)
-	{
-		this->dic.push_back(dic);
-	}
-	void setText(File t)
+
+	void setText(VectorWords t)
 	{
 		text = t;
 	}
-	File getText()
+	dictionary getDic()
+	{
+		return this->dic;
+	}
+	VectorWords getText()
 	{
 		return text;
 	}
-	void setCurrDicPos(list<File>::iterator currDicPos)
-	{
-		this->currDicPos = currDicPos;
-	}
-	void setcurrFilePos(set<word*>::iterator currFilePos)
+ 
+	void setcurrFilePos(vector<string>::iterator currFilePos)
 	{
 		this->currFilePos = currFilePos;
 	}

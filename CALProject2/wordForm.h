@@ -1,7 +1,8 @@
 #pragma once
-#include <vector>
+
 #include "vectorWords.h"
 #include "frmMain.h"
+#include "parsing.h"
 namespace CALProject2 {
 
 	using namespace System;
@@ -17,25 +18,19 @@ namespace CALProject2 {
 
 
 
-	VectorWords words;
+	VectorWords correct;
 
 	public ref class wordForm : public System::Windows::Forms::Form
 	{
 
-		string toString(System::String^ str) {
-			string tmp;
 
-			for (int i = 0; i < str->Length; i++)
-				tmp += (char)str[i];
 
-			return tmp;
-		}
 		String^ selectedWord;
 	public:
 
-		string getSelectedWord()
+		String^ getSelectedWord()
 		{
-			return toString(selectedWord);
+			return  selectedWord;
 		}
 
 		wordForm(void)
@@ -47,11 +42,11 @@ namespace CALProject2 {
 		}
 		void changeWords(std::vector<std::string> w)
 		{
-			words.changeWords(w);
+			correct.changeWords(w);
 		}
 		void addWords(std::string word)
 		{
-			words.addWords(word);
+			correct.addWords(word);
 		}
 
 	protected:
@@ -167,8 +162,8 @@ namespace CALProject2 {
 			if (vec.size() == 0)
 				return;
 
-			words.changeWords(vec);
-			words.setWordToBeChanged(w);
+			correct.changeWords(vec);
+			correct.setWordToBeChanged(w);
 			label->Text = gcnew String(w.c_str());
 			for (size_t i = 0; i < vec.size(); i++)
 			{
@@ -185,15 +180,10 @@ namespace CALProject2 {
 		this->Visible = false;
 	}
 	private: System::Void alternatives_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
-		cout << alternatives->SelectedIndex << endl;
 		selectedWord = (String^)alternatives->SelectedItem;
 	}
 	private: System::Void exitButton_Click(System::Object^  sender, System::EventArgs^  e) {
-
-		//this->Close();
-		this->~wordForm();
-		//this->Visible = false;
-
+		this->Visible = false;
 	}
 	};
 }

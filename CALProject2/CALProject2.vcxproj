@@ -80,24 +80,31 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="parsing.cpp" />
+    <ClCompile Include="trie.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="autocorrect.h" />
-    <ClInclude Include="file.h" />
+    <ClInclude Include="Dictionary.h" />
     <ClInclude Include="frmMain.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="trie.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="parsing.h" />
+    <ClInclude Include="textBoxPopUp.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="vectorWords.h" />
     <ClInclude Include="wordForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="words.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="textBoxPopUp.resx">
+      <DependentUpon>textBoxPopUp.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="wordForm.resx">
       <DependentUpon>wordForm.h</DependentUpon>

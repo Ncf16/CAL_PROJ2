@@ -5,7 +5,7 @@ using namespace std;
 /**
  * menu function teste teste teste
  */
-void menu(File d) {
+void menu(dictionary d) {
 
 	//string nodes = "Nodes", roads="Roads",edges="Edges";
 	vector<string> menu_options = getDirFiles();
@@ -64,7 +64,6 @@ void menu(File d) {
 
 			system("cls");
 			cout << "  A processar..." << endl << endl << endl << endl;
-			File d;
 
 			time_t t, t1;
 			time(&t);
