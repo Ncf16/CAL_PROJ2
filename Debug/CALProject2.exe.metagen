@@ -21,8 +21,10 @@ Class CALProject2.textBoxPopUp: AutoLayout, AnsiClass, Class, Public, BeforeFiel
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
     System.String fileName : Public
+    System.String text : Public
   Methods:
     getFileName(): PrivateScope, Public, HideBySig
+    getText(): PrivateScope, Public, HideBySig
 Class CALProject2.wordForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

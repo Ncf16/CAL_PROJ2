@@ -7,10 +7,12 @@
 #include "autocorrect.h"
 #include "textBoxPopUp.h"
 #include "wordForm.h"
+#include "trie.h"
+#include "heuristica.h"
 
 namespace CALProject2 {
 
-	dictionary d;
+	Trie d;
 	string file;
 
 	using namespace System;
@@ -25,7 +27,7 @@ namespace CALProject2 {
 	int contador = 0;
 	autoCorrect corretor;
 	string fileName;
-
+	vector<bool(*)(String^ search, int size, wchar_t first, wchar_t last,int tol)> heuristica;
 	public ref class frmMain : public System::Windows::Forms::Form
 	{
 	public:
@@ -107,7 +109,7 @@ namespace CALProject2 {
 			this->pickTextButton->TabIndex = 2;
 			this->pickTextButton->Text = L"Pick text";
 			this->pickTextButton->UseVisualStyleBackColor = true;
-			this->pickTextButton->Click += gcnew System::EventHandler(this, &frmMain::pickTextButtom_Click);
+			this->pickTextButton->Click += gcnew System::EventHandler(this, &frmMain::pickTextButton_Click);
 			// runButton
 			this->runButton->Location = System::Drawing::Point(26, 179);
 			this->runButton->Name = L"runButton";
@@ -179,43 +181,6 @@ namespace CALProject2 {
 	private: System::Void exitButtom_Click(System::Object^  sender, System::EventArgs^  e) {
 		this->~frmMain();
 	}
-	private: System::Void runButtom_Click(System::Object^  sender, System::EventArgs^  e) {
-
-		if (runButton->Text == L"Run")
-		{
-			if (text)
-			{
-				if (language)
-				{//vais ser o algoritmo
-					runButton->Text = L"Stop";
-					if (!runWorker->IsBusy){
-						contador = 0;
-						runWorker->RunWorkerAsync();
-
-
-						//System::Threading::Thread::Resume();
-					}
-				}
-				else
-				{
-					MessageBox::Show("Selecione uma linguagem\n");
-				}
-
-			}
-			else
-			{
-				MessageBox::Show("Selecione um texto\n");
-
-			}
-		}
-		else if (runButton->Text == L"Stop")
-		{
-			runButton->Text = L"Run";
-			runWorker->CancelAsync();
-
-
-		}
-	}
 
 			 //Run
 	private: System::Void run_DoWork(System::Object^  sender, System::ComponentModel::DoWorkEventArgs^  e) {
@@ -270,9 +235,48 @@ namespace CALProject2 {
 			{
 				this->pickTextButton->Visible = true;
 				this->doNothingButton->Visible = false;
+				this->runButton->Text = "Run";
 			}
 
 	}
+	private: System::Void runButton_Click(System::Object^  sender, System::EventArgs^  e) {
+
+		if (runButton->Text == L"Run")
+		{
+			if (text)
+			{
+				if (language)
+				{//vais ser o algoritmo
+					runButton->Text = L"Stop";
+					if (!runWorker->IsBusy){
+						contador = 0;
+						runWorker->RunWorkerAsync();
+
+
+						//System::Threading::Thread::Resume();
+					}
+				}
+				else
+				{
+					MessageBox::Show("Selecione uma linguagem\n");
+				}
+
+			}
+			else
+			{
+				MessageBox::Show("Selecione um texto\n");
+
+			}
+		}
+		else if (runButton->Text == L"Stop")
+		{
+			runButton->Text = L"Run";
+			runWorker->CancelAsync();
+
+
+		}
+	}
+
 
 
 			 //Text
@@ -293,12 +297,12 @@ namespace CALProject2 {
 			}
 			else
 			{
-				text = true;
+
 			}
 
 
 	}
-	private: System::Void pickTextButtom_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void pickTextButton_Click(System::Object^  sender, System::EventArgs^  e) {
 		textBoxPopUp^ console = gcnew textBoxPopUp();
 		this->dialogText->InitialDirectory = text_path;
 		this->dialogText->ShowDialog();
@@ -308,6 +312,7 @@ namespace CALProject2 {
 		{
 
 			fileName = toString(this->dialogText->FileName);
+			text = true;
 		}
 		else
 		{
@@ -316,6 +321,7 @@ namespace CALProject2 {
 			String^ tmp = console->getFileName();
 			if (tmp->Length != 0){
 				fileName = toString(tmp);
+				text = true;
 
 			}
 			console->~textBoxPopUp();
@@ -331,15 +337,15 @@ namespace CALProject2 {
 
 			 //Language
 	private: System::Void pickLanguage(System::Object^  sender, System::ComponentModel::DoWorkEventArgs^  e) {
-
-		wordForm^ options = gcnew wordForm();
-		//corretor.getDic(0)
-
+		
 		language = true;
-		if (loadParse(toString(this->dialogLanguage->FileName), d))
-			language = true;
-
-
+		delete(d.getRoot());
+		d.setRoot(new Node());
+		if (!loadParse(toString(this->dialogLanguage->FileName), d))
+		{
+			MessageBox::Show("ERROR in selecting Dictionary,please try again");
+		}
+		this->dialogLanguage->FileName = L"";
 		pickLanguageWorker->ReportProgress(100);
 
 	}
@@ -361,19 +367,15 @@ namespace CALProject2 {
 
 
 	}
-	private: System::Void pickLanguageButtom_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void pickLanguageButton_Click(System::Object^  sender, System::EventArgs^  e) {
 		this->dialogLanguage->InitialDirectory = language_path;
+
 		this->dialogLanguage->ShowDialog();
 		this->pickLanguageWorker->RunWorkerAsync();
 
 	}
 	private: System::Void dialogLanguage_FileOk(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
 	}
-	private: System::Void pickLanguageButton_Click(System::Object^  sender, System::EventArgs^  e) {
-	}
-	private: System::Void runButton_Click(System::Object^  sender, System::EventArgs^  e) {
-	}
+
 	};
-
-
 }

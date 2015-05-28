@@ -6,6 +6,7 @@
  */
 #include "parsing.h"
 #include<iomanip>
+#include "Trie.h"
 using namespace std;
 /**
  * loads from the parser
@@ -17,10 +18,12 @@ using namespace std;
 
 //algoritmo de exact matching, vale a pena por 1 char?
 
-int loadParse(string diciName, dictionary &d)
+int loadParse(string diciName, Trie &d)
 {
+	
 	ifstream dic;
-
+	time_t t, t1;
+	time(&t);
 	cout << diciName << endl;
 
 	string read;
@@ -39,11 +42,11 @@ int loadParse(string diciName, dictionary &d)
 			if (n != string::npos || n1 != string::npos) {
 				int lim = min(n, n1);
 				Final.assign(read, 0, lim);
-				d.addWord(Final);
+				d.addWord(toString(Final));
 				Final.clear();
 			}
 			else {
-				d.addWord(read);
+				d.addWord(toString(read));
 			}
 
 			read.clear();
@@ -53,7 +56,8 @@ int loadParse(string diciName, dictionary &d)
 	}
 	else
 		return 0;
-
+	time(&t1);
+	cout<<"TEMPO: "  << t1 - t << endl;
 	return 1;
 }
 void loadParse(string diciName, vector<string> &d)

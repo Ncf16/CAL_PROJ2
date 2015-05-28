@@ -77,6 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="autocorrect.cpp" />
+    <ClCompile Include="heuristica.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="parsing.cpp" />
@@ -88,6 +89,7 @@
     <ClInclude Include="frmMain.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="heuristica.h" />
     <ClInclude Include="trie.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="parsing.h" />

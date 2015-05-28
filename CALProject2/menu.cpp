@@ -67,7 +67,7 @@ void menu(dictionary d) {
 
 			time_t t, t1;
 			time(&t);
-			loadParse("dictionary/" + menu_options[opcao] + "/" + menu_options[opcao] + ".dic", d);
+//			loadParse("dictionary/" + menu_options[opcao] + "/" + menu_options[opcao] + ".dic", d);
 			time(&t1);
 			cout << t1 - t << endl;
 		

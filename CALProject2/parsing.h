@@ -16,9 +16,9 @@
 #include <stdio.h>
 #include "dictionary.h"
 #include "menu.h"
+#include"trie.h"
 
-
-int loadParse(std::string file, dictionary &d);
+int loadParse(std::string file, Trie &d);
 std::string toString(System::String^ str);
 System::String^ toString(std::string str);
 #endif /* SRC_PARSING_H_ */

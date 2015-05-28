@@ -30,6 +30,9 @@
     <ClCompile Include="trie.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="heuristica.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frmMain.h">
@@ -57,6 +60,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="trie.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="heuristica.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

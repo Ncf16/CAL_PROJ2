@@ -20,10 +20,16 @@ namespace CALProject2 {
 	public ref class textBoxPopUp : public System::Windows::Forms::Form
 	{
 	public:
-		String^ fileName=gcnew String("");
+		String^ fileName = gcnew String("");
+		String^ text = gcnew String("");
 		String^ getFileName()
 		{
 			return fileName;
+		}
+		String^ getText()
+		{
+			return text;
+
 		}
 		textBoxPopUp(void)
 		{
@@ -59,7 +65,7 @@ namespace CALProject2 {
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
-	
+
 		void InitializeComponent(void)
 		{
 			this->textBox = (gcnew System::Windows::Forms::TextBox());
@@ -109,21 +115,25 @@ namespace CALProject2 {
 	private: System::Void textBoxPopUp_Load(System::Object^  sender, System::EventArgs^  e) {
 	}
 	private: System::Void Done_Click(System::Object^  sender, System::EventArgs^  e) {
-		std::string temp;
-		std::string fileNameTemp;
-	
+	/*	std::string temp;
+		std::string fileNameTemp;*/
+
 		this->Visible = false;
-		temp = toString(this->textBox->Text);
-		FILE *f;
+		text = this->textBox->Text;
+		/*FILE *f;
 		MessageBox::Show("Insert File name in cmd");
-		cout << "Escreva o nome do que quer dar ao ficheiro (Prima ENTER para terminar)" << endl;
-		getline(cin, fileNameTemp);
+		this->textBox->Text = L"";
+		this->Visible = true;
+		this->textBox->Show();
+		fileNameTemp = toString(this->textBox->Text);
+
+
 		fileNameTemp += ".txt";
 		f = fopen(fileNameTemp.c_str(), "w+");
 		fwrite(temp.c_str(), 1, temp.size(), f);
 		fclose(f);
-		fileName = toString(fileNameTemp);
-		
+		fileName = toString(fileNameTemp);*/
+
 
 	}
 	};
