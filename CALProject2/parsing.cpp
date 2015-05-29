@@ -14,7 +14,7 @@ using namespace std;
 
 #define BARRA '/'
 #define TAB '\t'
- 
+
 using namespace std;
 //algoritmo de exact matching, vale a pena por 1 char?
 string toString(System::String^ str) {
@@ -51,7 +51,7 @@ int loadParse(string diciName, Trie &d)
 	wifstream stream(diciName.c_str());
 	stream.imbue(utf8_locale);
 	//stream.open(diciName.c_str(), ifstream::in);
-	
+
 	if (!stream.fail()) {
 		do {
 			getline(stream, read);
@@ -77,13 +77,13 @@ int loadParse(string diciName, Trie &d)
 	else
 		return 0;
 
- 
+
 	teste.close();
 	stream.close();
 	cout << "TEMPO: " << GetMilliSpan(t) << endl;
 	return 1;
 }
-void loadParse(string diciName, vector<string> &d)
+int loadParseVec(std::string diciName, std::vector<std::string> &d)
 {
 	ifstream dic;
 	string read;
@@ -116,6 +116,7 @@ void loadParse(string diciName, vector<string> &d)
 
 	}
 	else
-		cout << "FAILED \n" << endl;
-	cout << "OUT" << endl;
+		return 0;
+
+	return 1;
 }

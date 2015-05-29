@@ -8,4 +8,6 @@ bool level2(System::String^ search, int size, wchar_t first, wchar_t last, int t
 bool level3(System::String^ search, int size, wchar_t first, wchar_t last, int tol);
 bool level4(System::String^ search, int size, wchar_t first, wchar_t last, int tol);
 bool level5(System::String^ search, int size, wchar_t first, wchar_t last, int tol);
+bool level6(System::String^ search, int size, wchar_t first, wchar_t last, int tol);
+bool level7(System::String^ search, int size, wchar_t first, wchar_t last, int tol);
 #endif

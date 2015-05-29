@@ -80,7 +80,6 @@
     <ClCompile Include="extra.cpp" />
     <ClCompile Include="heuristica.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="menu.cpp" />
     <ClCompile Include="parsing.cpp" />
     <ClCompile Include="trie.cpp" />
   </ItemGroup>
@@ -92,8 +91,8 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="heuristica.h" />
-    <ClInclude Include="trie.h" />
     <ClInclude Include="menu.h" />
+    <ClInclude Include="trie.h" />
     <ClInclude Include="parsing.h" />
     <ClInclude Include="textBoxPopUp.h">
       <FileType>CppForm</FileType>

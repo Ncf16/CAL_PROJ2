@@ -214,7 +214,7 @@ namespace CALProject2 {
 			int size = 6;
 			wchar_t first = 't';
 			wchar_t last = 'r';
-			for (int i = 0; i < heuristica.size(); i++)
+			for (size_t i = 0; i < heuristica.size(); i++)
 			{
 				time_t t, t1;
 				time(&t);

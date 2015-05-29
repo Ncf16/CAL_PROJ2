@@ -20,7 +20,7 @@ bool level2(System::String^ search, int size, wchar_t first, wchar_t last, int t
 
 	if (abs(search->Length - size) > tol)
 		return false;
-	
+
 	if ((search[0] != first) || (search[size - 1] != last))
 		return false;
 
@@ -37,14 +37,24 @@ bool level3(System::String^ search, int size, wchar_t first, wchar_t last, int t
 	return true;
 
 }
-//only works with the same size
+
+//only the same letter
 bool level4(System::String^ search, int size, wchar_t first, wchar_t last, int tol)
 {
+	return (search[0] == first);
+}
+//only works with the same size
+bool level5(System::String^ search, int size, wchar_t first, wchar_t last, int tol)
+{
 	return search->Length == size;
+}//only works within the  same [size-tol,size+tol}
+bool level6(System::String^ search, int size, wchar_t first, wchar_t last, int tol)
+{
+	return abs(search->Length - size) <= tol;
 }
 
 //Full mayhem, "back hole"
-bool level5(System::String^ search, int size, wchar_t first, wchar_t last, int tol)
+bool level7(System::String^ search, int size, wchar_t first, wchar_t last, int tol)
 {
 	return true;
 }

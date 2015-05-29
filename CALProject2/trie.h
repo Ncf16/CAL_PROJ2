@@ -101,6 +101,13 @@ public:
 	{
 		return root;
 	}
+
+	//what would happen with &
+	map<wchar_t, Node*> getRootNodes()
+	{
+		return root->getNodes();
+	}
+
 	void addWord(System::String^ s)
 	{
 		addWord(s, root, 0);
@@ -113,7 +120,7 @@ public:
 			n->end = true;
 			return;
 		}
-		//	cout << "inserting: " << (char)s[i] << endl;
+
 		Node * newNode = n->insertNode(s[i]);
 		addWord(s, newNode, i + 1);
 	}
