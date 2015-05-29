@@ -4,8 +4,13 @@
 #include <algorithm>
 #include "trie.h"
 #include "vectorWords.h"
+#include <iostream>
+#include<string>
+#include <fstream>
+#include <stdlib.h>
+#include <algorithm>
+#include"extra.h"
 
-#define OPERATION_COST 1
 class autoCorrect{
 private:
 	Trie dic;
@@ -44,6 +49,6 @@ public:
 	}
 };
 
-int approximateString(System::String^ str,System::String^ word);
+int approximateString(System::String^ pattern, System::String^ word);
 
 #endif

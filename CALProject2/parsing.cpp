@@ -13,55 +13,74 @@ using namespace std;
  */
 
 #define BARRA '/'
-#define TAB "\t"
-#include <time.h>
-
+#define TAB '\t'
+ 
+using namespace std;
 //algoritmo de exact matching, vale a pena por 1 char?
+string toString(System::String^ str) {
+	string tmp;
+
+	for (int i = 0; i < str->Length; i++)
+		tmp += (char)str[i];
+
+	return tmp;
+}
+
+System::String^ toString(string str) {
+	return  gcnew System::String(str.c_str());
+}
+
 
 int loadParse(string diciName, Trie &d)
 {
 
-	ifstream dic;
-	//	ofstream teste;
-	//teste.open("treta.txt");
-	time_t t, t1;
-	time(&t);
+
+	wofstream teste;
+	teste.open("treta.txt");
+	int t;
 	cout << diciName << endl;
+	t = GetMilliCount();
+	wstring read;
+	wstring Final;
 
-	string read;
 	size_t n, n1;
-
-	string Final;
-	cout << "here" << endl;
-	dic.open(diciName.c_str());
-	if (!dic.fail()) {
-		cout << "working" << endl;
+	const locale empty_locale = locale::empty();
+	typedef codecvt_utf8<wchar_t> converter_type;
+	const converter_type* converter = new converter_type;
+	const locale utf8_locale = locale(empty_locale, converter);
+	wifstream stream(diciName.c_str());
+	stream.imbue(utf8_locale);
+	//stream.open(diciName.c_str(), ifstream::in);
+	
+	if (!stream.fail()) {
 		do {
-			getline(dic, read);   
-
+			getline(stream, read);
 			n = read.find(TAB);
 			n1 = read.find(BARRA);
+
 			if (n != string::npos || n1 != string::npos) {
 				int lim = min(n, n1);
 				Final.assign(read, 0, lim);
-				d.addWord(toString(Final));
-				//teste << toString(toString(Final)) << endl;
+				System::String^temp = gcnew System::String(Final.c_str());
+				d.addWord(temp);
+				teste << Final.c_str() << endl;
 				Final.clear();
 			}
 			else {
-				//	teste << toString(toString(read)) << endl;
-				d.addWord(toString(read));
+				teste << read.c_str() << endl;
+				System::String^temp = gcnew System::String(read.c_str());
+				d.addWord(temp);
 			}
-
 			read.clear();
-
-		} while (!dic.eof());
-
+		} while (!stream.eof());
 	}
 	else
 		return 0;
-	time(&t1);
-	cout << "TEMPO: " << t1 - t << endl;
+
+ 
+	teste.close();
+	stream.close();
+	cout << "TEMPO: " << GetMilliSpan(t) << endl;
 	return 1;
 }
 void loadParse(string diciName, vector<string> &d)
@@ -100,33 +119,3 @@ void loadParse(string diciName, vector<string> &d)
 		cout << "FAILED \n" << endl;
 	cout << "OUT" << endl;
 }
-string toString(System::String^ str) {
-	string tmp;
-
-	for (int i = 0; i < str->Length; i++)
-		tmp += (char)str[i];
-
-	return tmp;
-}
-
-System::String^ toString(std::string str) {
-	return  gcnew System::String(str.c_str());
-}
-
-int GetMilliCount()
-{
-	timeb tb;
-	ftime(&tb);
-	int nCount = tb.millitm + (tb.time & 0xfffff) * 1000;
-	return nCount;
-}
-//---------------------------------------------------------------------------
-
-int GetMilliSpan(int nTimeStart)
-{
-	int nSpan = GetMilliCount() - nTimeStart;
-	if (nSpan < 0)
-		nSpan += 0x100000 * 1000;
-	return nSpan;
-}
-//-

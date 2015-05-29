@@ -1,8 +1,8 @@
 /*
  * Trie.h
  */
-#ifndef TRIE_H_
-#define TRIE_H_
+#ifndef SRC_TRIE_H_
+#define SRC_TRIE_H_
 
 #include <map>
 

@@ -9,7 +9,10 @@
 #include "wordForm.h"
 #include "trie.h"
 #include "heuristica.h"
-
+#include "wordForm.h"
+#include <string>
+#include<fstream>
+ 
 namespace CALProject2 {
 
 	Trie d;
@@ -392,7 +395,7 @@ namespace CALProject2 {
 			}
 			else
 			{
-				//corretor.getDic().print();
+				corretor.getDic().print();
 			}
 
 

@@ -1,5 +1,5 @@
-#ifndef HEURISTICA_H_
-#define HEURISTICA_H_
+#ifndef SRC_HEURISTICA_H_
+#define SRC_HEURISTICA_H_
 #include <iostream>
 #include<math.h>
 

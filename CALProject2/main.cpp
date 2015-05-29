@@ -1,10 +1,5 @@
 #include "frmMain.h"
-#include "parsing.h"
-#include "wordForm.h"
-#include <string>
-#include<fstream>
-#include "textBoxPopUp.h"
-#include "trie.h"
+
 using namespace CALProject2;
 
 bool compare(String^ search, int size, wchar_t first, wchar_t last)
@@ -28,7 +23,7 @@ int main(array<System::String ^> ^args) {
 
 	// Create the main window and run it
 
-	vector<string> s = { "ola", "cores", "azuis" };
+/*	vector<string> s = { "ola", "cores", "azuis" };
 	wordForm^ w = gcnew wordForm();
 	w->changeForm("teste", s);
 	//w->Visible = true;
@@ -39,7 +34,7 @@ int main(array<System::String ^> ^args) {
 		int b = 10;
 		a = b;
 
-		cout << a << endl;*/
+		cout << a << endl;
 	Application::Run( gcnew frmMain());
 	cout << "end" << endl;
  
@@ -53,6 +48,9 @@ int main(array<System::String ^> ^args) {
 	s = L"12568";
 	t.addWord(s);
 	t.print();*/
+	String^s1 = gcnew String("testar");
+	String^s2 = gcnew String("testar");
+	cout<<	approximateString(s1, s2)<<endl;
 	_getch();
 	//	menu(d);
 	//initi();

@@ -14,16 +14,21 @@
 #include <fstream>
 #include <stdlib.h>
 #include <stdio.h>
-#include "dictionary.h"
+ 
 #include "menu.h"
 #include"trie.h"
 #include <time.h>
 #include <sys/timeb.h>
-
+#include <time.h>
+#include <locale>
+#include <codecvt>
+#include <string>
+ 
+#include <cstdlib>
+#include "extra.h"
 int loadParse(std::string file, Trie &d);
 std::string toString(System::String^ str);
 System::String^ toString(std::string str);
-int GetMilliCount();
-int GetMilliSpan(int nTimeStart);
+ 
 
 #endif /* SRC_PARSING_H_ */
