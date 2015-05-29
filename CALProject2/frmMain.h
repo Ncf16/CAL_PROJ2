@@ -27,7 +27,7 @@ namespace CALProject2 {
 	int contador = 0;
 	autoCorrect corretor;
 	string fileName;
-	vector<bool(*)(String^ search, int size, wchar_t first, wchar_t last,int tol)> heuristica;
+	vector<bool(*)(String^ search, int size, wchar_t first, wchar_t last, int tol)> heuristica;
 	public ref class frmMain : public System::Windows::Forms::Form
 	{
 	public:
@@ -35,6 +35,13 @@ namespace CALProject2 {
 
 		frmMain(void)
 		{
+
+			heuristica.push_back(&level1);
+			heuristica.push_back(&level2);
+			heuristica.push_back(&level3);
+			heuristica.push_back(&level4);
+			heuristica.push_back(&level5);
+
 			InitializeComponent();
 
 		}
@@ -199,11 +206,31 @@ namespace CALProject2 {
 				//this->pickTextButton->Enabled = false;
 				//	return;
 			}
-			System::Threading::Thread::Sleep(1);
+
+			String^ teste("testar");
+			int size = 6;
+			wchar_t first = 't';
+			wchar_t last = 'r';
+			for (int i = 0; i < heuristica.size(); i++)
+			{
+				time_t t, t1;
+				time(&t);
+				bool(*func)(String^ search, int size, wchar_t first, wchar_t last, int tol) = heuristica[i];
+				if (func(teste, size, first, last, 0))
+					cout << "WORKED" << endl;
+				else
+					cout << "END" << endl;
+				time(&t1);
+				cout << "IT TOOK: " << t - t1 << endl;
+				cout << "IN" << endl;
+			}
+
+			System::Threading::Thread::Sleep(3);
 			contador++;
 			if (contador == 1000)
 				return;
-			cout << contador << endl;
+
+			//	cout << contador << endl;
 		}
 		//backgroundWorker1->ReportProgress(0);
 
@@ -218,8 +245,8 @@ namespace CALProject2 {
 
 		if (e->Cancelled)
 		{
-			this->pickTextButton->Visible = false;
-			this->doNothingButton->Visible = true;
+			this->pickTextButton->Visible = true;
+			this->doNothingButton->Visible = false;
 			cout << "here" << endl;
 			contador = 0;
 			//System::ComponentModel::DoWorkEventArgs^ newE = gcnew DoWorkEventArgs(sender);
@@ -251,6 +278,8 @@ namespace CALProject2 {
 					if (!runWorker->IsBusy){
 						contador = 0;
 						runWorker->RunWorkerAsync();
+						this->pickTextButton->Visible = false;
+						this->doNothingButton->Visible = true;
 
 
 						//System::Threading::Thread::Resume();
@@ -337,11 +366,11 @@ namespace CALProject2 {
 
 			 //Language
 	private: System::Void pickLanguage(System::Object^  sender, System::ComponentModel::DoWorkEventArgs^  e) {
-		
+
 		language = true;
 		delete(d.getRoot());
 		d.setRoot(new Node());
-		if (!loadParse(toString(this->dialogLanguage->FileName), d))
+		if (!loadParse(toString(this->dialogLanguage->FileName), corretor.getDic()))
 		{
 			MessageBox::Show("ERROR in selecting Dictionary,please try again");
 		}
@@ -363,6 +392,7 @@ namespace CALProject2 {
 			}
 			else
 			{
+				//corretor.getDic().print();
 			}
 
 

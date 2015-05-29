@@ -4,6 +4,8 @@
 #include <algorithm>
 #include "trie.h"
 #include "vectorWords.h"
+
+#define OPERATION_COST 1
 class autoCorrect{
 private:
 	Trie dic;
@@ -41,5 +43,7 @@ public:
 		this->currFilePos = currFilePos;
 	}
 };
+
+int approximateString(System::String^ str,System::String^ word);
 
 #endif

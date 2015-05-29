@@ -33,10 +33,16 @@ int main(array<System::String ^> ^args) {
 	w->changeForm("teste", s);
 	//w->Visible = true;
 	//textBoxPopUp^ p = gcnew textBoxPopUp();
-	cout << "Before" << endl;
-	Application::Run(w);// gcnew frmMain());
-	cout << "end" << endl;
+	/*cout << "Before" << endl;
+	
+	int a = 5;
+		int b = 10;
+		a = b;
 
+		cout << a << endl;*/
+	Application::Run( gcnew frmMain());
+	cout << "end" << endl;
+ 
 	/*Trie t;
 	String^  s;
 	s = L"12347";

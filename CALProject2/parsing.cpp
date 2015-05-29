@@ -20,8 +20,10 @@ using namespace std;
 
 int loadParse(string diciName, Trie &d)
 {
-	
+
 	ifstream dic;
+	//	ofstream teste;
+	//teste.open("treta.txt");
 	time_t t, t1;
 	time(&t);
 	cout << diciName << endl;
@@ -43,9 +45,11 @@ int loadParse(string diciName, Trie &d)
 				int lim = min(n, n1);
 				Final.assign(read, 0, lim);
 				d.addWord(toString(Final));
+				//teste << toString(toString(Final)) << endl;
 				Final.clear();
 			}
 			else {
+				//	teste << toString(toString(read)) << endl;
 				d.addWord(toString(read));
 			}
 
@@ -57,7 +61,7 @@ int loadParse(string diciName, Trie &d)
 	else
 		return 0;
 	time(&t1);
-	cout<<"TEMPO: "  << t1 - t << endl;
+	cout << "TEMPO: " << t1 - t << endl;
 	return 1;
 }
 void loadParse(string diciName, vector<string> &d)
@@ -108,3 +112,21 @@ string toString(System::String^ str) {
 System::String^ toString(std::string str) {
 	return  gcnew System::String(str.c_str());
 }
+
+int GetMilliCount()
+{
+	timeb tb;
+	ftime(&tb);
+	int nCount = tb.millitm + (tb.time & 0xfffff) * 1000;
+	return nCount;
+}
+//---------------------------------------------------------------------------
+
+int GetMilliSpan(int nTimeStart)
+{
+	int nSpan = GetMilliCount() - nTimeStart;
+	if (nSpan < 0)
+		nSpan += 0x100000 * 1000;
+	return nSpan;
+}
+//-

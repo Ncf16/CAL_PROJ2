@@ -72,20 +72,27 @@ namespace CALProject2 {
 			this->exitButton = (gcnew System::Windows::Forms::Button());
 			this->label = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
+			// 
 			// wordToBeChanged
+			// 
 			this->wordToBeChanged->AutoSize = true;
 			this->wordToBeChanged->Location = System::Drawing::Point(120, 47);
 			this->wordToBeChanged->Name = L"wordToBeChanged";
 			this->wordToBeChanged->Size = System::Drawing::Size(0, 13);
 			this->wordToBeChanged->TabIndex = 0;
+			// 
 			// alternatives
+			// 
 			this->alternatives->FormattingEnabled = true;
 			this->alternatives->Location = System::Drawing::Point(63, 84);
+			this->alternatives->MaxLength = 100;
 			this->alternatives->Name = L"alternatives";
 			this->alternatives->Size = System::Drawing::Size(157, 21);
 			this->alternatives->TabIndex = 1;
 			this->alternatives->SelectedIndexChanged += gcnew System::EventHandler(this, &wordForm::alternatives_SelectedIndexChanged);
+			// 
 			// doneButton
+			// 
 			this->doneButton->Location = System::Drawing::Point(23, 178);
 			this->doneButton->Name = L"doneButton";
 			this->doneButton->Size = System::Drawing::Size(115, 54);
@@ -93,7 +100,9 @@ namespace CALProject2 {
 			this->doneButton->Text = L"Done";
 			this->doneButton->UseVisualStyleBackColor = true;
 			this->doneButton->Click += gcnew System::EventHandler(this, &wordForm::button1_Click);
+			// 
 			// exitButton
+			// 
 			this->exitButton->Location = System::Drawing::Point(155, 178);
 			this->exitButton->Name = L"exitButton";
 			this->exitButton->Size = System::Drawing::Size(117, 54);
@@ -101,13 +110,17 @@ namespace CALProject2 {
 			this->exitButton->Text = L"Exit";
 			this->exitButton->UseVisualStyleBackColor = true;
 			this->exitButton->Click += gcnew System::EventHandler(this, &wordForm::exitButton_Click);
+			// 
 			// label
+			// 
 			this->label->AutoSize = true;
 			this->label->Location = System::Drawing::Point(120, 34);
 			this->label->Name = L"label";
 			this->label->Size = System::Drawing::Size(0, 13);
 			this->label->TabIndex = 4;
+			// 
 			// wordForm
+			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(288, 266);
@@ -147,13 +160,15 @@ namespace CALProject2 {
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 
 		this->Visible = false;
+		this->~wordForm();
+	
 	}
 	private: System::Void alternatives_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 		selectedWord = (String^)alternatives->SelectedItem;
 		cout << toString(selectedWord) << endl;
 	}
 	private: System::Void exitButton_Click(System::Object^  sender, System::EventArgs^  e) {
-		this->Visible = false;
+		this->~wordForm();
 	}
 	};
 }
