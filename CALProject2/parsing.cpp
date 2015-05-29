@@ -37,7 +37,7 @@ int loadParse(string diciName, Trie &d)
 	if (!dic.fail()) {
 		cout << "working" << endl;
 		do {
-			getline(dic, read);
+			getline(dic, read);   
 
 			n = read.find(TAB);
 			n1 = read.find(BARRA);
